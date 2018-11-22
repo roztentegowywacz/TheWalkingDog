@@ -1,0 +1,13 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+    <AssemblyName>TheWalkingDog.Infrastructure</AssemblyName>
+    <PackageId>TheWalkingDog.Infrastructure</PackageId>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="../TheWalkingDog.Core/TheWalkingDog.Core.csproj" />
+  </ItemGroup>
+
+</Project>
