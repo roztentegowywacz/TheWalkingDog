@@ -11,5 +11,25 @@ namespace TheWalkingDog.Core.Domain
         public string Name { get; protected set; }
 
         public Node Adress { get; protected set; }
+
+
+        protected Dog()
+        {
+        }
+
+        public Dog(string name)
+        {
+            SetName(name);
+        }
+
+        private void SetName(string name)
+        {
+            if (Name == name)
+            {
+                return;
+            }
+
+            Name = name;
+        }
     }
 }
