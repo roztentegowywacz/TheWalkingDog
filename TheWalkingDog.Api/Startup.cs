@@ -11,6 +11,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
 using TheWalkingDog.Core.Repositories;
+using TheWalkingDog.Infrastructure.Mappers;
 using TheWalkingDog.Infrastructure.Repositories;
 using TheWalkingDog.Infrastructure.Services;
 
@@ -30,6 +31,7 @@ namespace TheWalkingDog.Api
         {
             services.AddScoped<IUserRepository, InMemoryUserRepository>(); 
             services.AddScoped<IUserService, UserSevice>();
+            services.AddSingleton(AutoMapperConfig.Initialize());
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
         }
 

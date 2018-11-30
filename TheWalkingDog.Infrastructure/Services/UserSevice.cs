@@ -1,4 +1,5 @@
 using System;
+using AutoMapper;
 using TheWalkingDog.Core.Domain;
 using TheWalkingDog.Core.Repositories;
 using TheWalkingDog.Infrastructure.DTO;
@@ -8,23 +9,19 @@ namespace TheWalkingDog.Infrastructure.Services
     public class UserSevice : IUserService
     {
         private readonly IUserRepository _userRepository;
+        private readonly IMapper _mapper;
 
-        public UserSevice(IUserRepository userRepository)
+        public UserSevice(IUserRepository userRepository, IMapper mapper)
         {
             _userRepository = userRepository;
+            _mapper = mapper;
         }
 
         public UserDto Get(string email)
         {
             var user = _userRepository.Get(email);
 
-            return new UserDto
-            {
-                Id = user.Id,
-                UserName = user.UserName,
-                Email = user.Email,
-                FullName = user.FullName
-            };
+            return _mapper.Map<User, UserDto>(user);
         }
 
         public void Register(string email, string username, string password)
