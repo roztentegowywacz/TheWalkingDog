@@ -10,6 +10,9 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
+using TheWalkingDog.Core.Repositories;
+using TheWalkingDog.Infrastructure.Repositories;
+using TheWalkingDog.Infrastructure.Services;
 
 namespace TheWalkingDog.Api
 {
@@ -25,6 +28,8 @@ namespace TheWalkingDog.Api
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddScoped<IUserRepository, InMemoryUserRepository>(); 
+            services.AddScoped<IUserService, UserSevice>();
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
         }
 
@@ -37,10 +42,10 @@ namespace TheWalkingDog.Api
             }
             else
             {
-                app.UseHsts();
+                // app.UseHsts();
             }
 
-            app.UseHttpsRedirection();
+            // app.UseHttpsRedirection();
             app.UseMvc();
         }
     }
